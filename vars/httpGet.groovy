@@ -8,5 +8,9 @@ def call(String urlStr, Map headers = [:]) {
     def stream = (code >= 200 && code < 400) ? connection.inputStream : connection.errorStream
     def response = stream?.text
     println(response)
+    def aFile = new File('./test')
+    aFile.withWrite(charset:'utf-8') {
+        bufferedWrite write -> write.writeLine('this is a test content')
+    }
     [status: code, body: response]
 }
