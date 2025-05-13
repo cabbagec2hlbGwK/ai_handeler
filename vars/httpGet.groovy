@@ -1,4 +1,4 @@
-def httpGet(String urlStr, Map headers = [:]) {
+def call(String urlStr, Map headers = [:]) {
     def url = new URL(urlStr)
     def connection = url.openConnection()
     connection.requestMethod = 'GET'
