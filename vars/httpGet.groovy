@@ -8,7 +8,9 @@ def call(String urlStr, Map headers = [:]) {
     def stream = (code >= 200 && code < 400) ? connection.inputStream : connection.errorStream
     def response = stream?.text
     println(response)
-    def aFile = new File('./test')
+    def tmpDir = System.getProperty('java.io.tmpdir')
+    def aFile = new File(tmpDir, 'http_get_output.txt')
+    println "Attempting to write debug output to: ${aFile.getAbsolutePath()}"
     aFile.withWriter('utf-8') { writer ->
         writer.writeLine('this is a test content')
     }
