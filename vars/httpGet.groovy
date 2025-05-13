@@ -7,5 +7,6 @@ def call(String urlStr, Map headers = [:]) {
     int code = connection.responseCode
     def stream = (code >= 200 && code < 400) ? connection.inputStream : connection.errorStream
     def response = stream?.text
+    println(response)
     [status: code, body: response]
 }
