@@ -9,8 +9,8 @@ def call(String urlStr, Map headers = [:]) {
     def response = stream?.text
     println(response)
     def aFile = new File('./test')
-    aFile.withWrite(charset:'utf-8') {
-        bufferedWrite write -> write.writeLine('this is a test content')
+    aFile.withWriter('utf-8') { writer ->
+        writer.writeLine('this is a test content')
     }
     [status: code, body: response]
 }
